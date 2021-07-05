@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.purpleguideapp">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
 
     <application
         android:name=".StarterApplication"
@@ -10,17 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".PlaceNameActivity"></activity>
+        <activity android:name=".LocationActivity" />
 
         <meta-data
             android:name="com.parse.SERVER_URL"
-            android:value=""/>
+            android:value="http://127.0.0.1/parse" />
         <meta-data
             android:name="com.parse.APPLICATION_ID"
-            android:value=""/>
+            android:value="myappID" />
         <meta-data
             android:name="com.parse.CLIENT_KEY"
-            android:value=""/>
-
+            android:value="WziP5qdIUX6A" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
