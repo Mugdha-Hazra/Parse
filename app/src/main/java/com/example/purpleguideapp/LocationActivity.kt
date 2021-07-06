@@ -5,9 +5,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
+import java.util.ArrayList
 
 class LocationActivity : AppCompatActivity() {
-
+    var namearray=ArrayList<String>()
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
@@ -31,5 +33,13 @@ class LocationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
+        getParseData()
     }
+    fun getParseData(){
+        val arrayAdapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,namearray)
+
+
+    }
+
+
 }
