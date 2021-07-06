@@ -123,9 +123,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),1)
         } else {
-            LocationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER,2,2f,locationListener)
+            locationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER,2,2f,locationListener)
             mMap.clear()
-            var lastLocation = LocationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            var lastLocation = locationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)
             var lastUserLocation = LatLng(lastLocation.latitude,lastLocation.longitude)
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lastUserLocation,17f))
 
@@ -186,7 +186,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         if (grantResults.size > 0) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                LocationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER,2,2f,locationListener)
+                locationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER,2,2f,locationListener)
 
             }
         }
