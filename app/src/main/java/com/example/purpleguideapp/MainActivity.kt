@@ -64,6 +64,7 @@ class MainActivity : AppCompatActivity() {
               }else{
                   Toast.makeText(applicationContext,"Welcome"+user.username.toString(),Toast.LENGTH_LONG).show()
                    val intent=Intent(applicationContext, LocationActivity::class.java)
+                  startActivity(intent)
               }
             })
 

@@ -3,17 +3,24 @@ package com.example.purpleguideapp
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.support.v7.app.AppCompatActivity
+import android.graphics.Bitmap
+
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_place_name.*
 import java.util.jar.Manifest
 
 var globalName=""
-
+var globalType=""
+var globalAtmosphere=""
+var globalImage: Bitmap?=null
 
 class PlaceNameActivity : AppCompatActivity() {
+
+    var chosenImage:Bitmap?=null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_name)
@@ -46,12 +53,12 @@ class PlaceNameActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if(requestCode==1&&resultCode==Activity.RESULT_OK&&data!=null)
+        if(requestCode==1&&resultCode== RESULT_OK &&data!=null)
         {
             val selected=data.data
             try {
-                val bitmap=MediaStore.Images.Media.getBitmap(this.contentResolver,selected)
-                imageView2.setImageBitmap(bitmap)
+                chosenImage=MediaStore.Images.Media.getBitmap(this.contentResolver,selected)
+                imageView2.setImageBitmap(chosenImage)
 
             }catch (e:Exception)
             {
@@ -62,6 +69,12 @@ class PlaceNameActivity : AppCompatActivity() {
     }
     fun next(view: View)
     {
+           globalImage=chosenImage
+           globalName=nameText.text.toString()
+        globalType=typeText.text.toString()
+        globalAtmosphere=atmosphereText.text.toString()
+        val intent=Intent(applicationContext,MapsActivity::class.java)
+        startActivity(intent)
 
     }
 }
